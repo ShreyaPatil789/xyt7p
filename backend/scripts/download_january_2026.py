@@ -176,3 +176,4 @@ if __name__ == "__main__":
     print("Forecasts stats:", cur.fetchone())
     conn.close()
     print("Data download completed successfully!")
+

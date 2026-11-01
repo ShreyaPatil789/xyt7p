@@ -295,3 +295,4 @@ Tests verify:
 3. 48 settlement periods alignment between actuals and forecasts.
 4. Mathematical accuracy of MAE, RMSE, WAPE, and Bias.
 5. Monthly summary aggregation and diurnal SP 1–48 profiling.
+

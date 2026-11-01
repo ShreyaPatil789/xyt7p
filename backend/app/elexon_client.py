@@ -90,3 +90,4 @@ class ElexonClient:
             "actualsSaved": saved_actuals,
             "forecastsSaved": saved_forecasts
         }
+

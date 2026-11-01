@@ -191,3 +191,4 @@ export default function DailyAccuracyTable({ dailyData = [], onSelectDate, selec
     </div>
   );
 }
+

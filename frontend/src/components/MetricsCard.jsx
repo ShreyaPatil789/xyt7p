@@ -86,3 +86,4 @@ export default function MetricsCard({ metrics, title = "Evaluation Metrics" }) {
     </div>
   );
 }
+

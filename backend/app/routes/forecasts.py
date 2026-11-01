@@ -86,3 +86,4 @@ def sync_elexon_data(
         "syncedRange": f"{start_date} to {end_date}",
         "result": result
     }
+

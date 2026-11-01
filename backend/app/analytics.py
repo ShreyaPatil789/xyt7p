@@ -223,3 +223,4 @@ def get_lead_time_sensitivity(sample_date: str = "2026-01-15") -> List[Dict[str,
             "bias": metrics["bias"]
         })
     return results
+

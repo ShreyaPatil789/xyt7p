@@ -133,3 +133,4 @@ export default function ForecastEvolutionChart({ deliveryDate, actualProfile = [
     </div>
   );
 }
+

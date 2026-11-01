@@ -43,3 +43,4 @@ export async function simulateProcurement(params) {
   if (!res.ok) throw new Error('Failed to simulate procurement');
   return res.json();
 }
+

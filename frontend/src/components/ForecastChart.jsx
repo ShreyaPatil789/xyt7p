@@ -234,3 +234,4 @@ export default function ForecastChart({ profile = [], deliveryDate, decisionCuto
     </div>
   );
 }
+

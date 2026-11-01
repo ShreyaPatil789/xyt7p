@@ -7,8 +7,6 @@ import ForecastEvolutionChart from './components/ForecastEvolutionChart';
 import DailyAccuracyTable from './components/DailyAccuracyTable';
 import SettlementPeriodHeatmap from './components/SettlementPeriodHeatmap';
 import ProcurementCalculator from './components/ProcurementCalculator';
-import PitchDeckModal from './components/PitchDeckModal';
-import ArchitectureModal from './components/ArchitectureModal';
 import {
   fetchAvailableDates,
   fetchDayForecast,
@@ -25,10 +23,6 @@ export default function App() {
   const [monthlyData, setMonthlyData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Modals
-  const [isPitchOpen, setIsPitchOpen] = useState(false);
-  const [isArchOpen, setIsArchOpen] = useState(false);
 
   // Initial load: available dates and monthly analytics
   useEffect(() => {
@@ -95,8 +89,6 @@ export default function App() {
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        onOpenPitch={() => setIsPitchOpen(true)}
-        onOpenArch={() => setIsArchOpen(true)}
         selectedDate={selectedDate}
       />
 
@@ -250,10 +242,7 @@ export default function App() {
           </div>
         </div>
       </footer>
-
-      {/* Presentation & Review Modals */}
-      <PitchDeckModal isOpen={isPitchOpen} onClose={() => setIsPitchOpen(false)} />
-      <ArchitectureModal isOpen={isArchOpen} onClose={() => setIsArchOpen(false)} />
     </div>
   );
 }
+

@@ -29,3 +29,4 @@ def get_lead_time_curve(
         "deliveryDate": sample_date,
         "leadTimeSensitivity": curve
     }
+

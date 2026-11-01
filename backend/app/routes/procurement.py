@@ -112,3 +112,4 @@ def simulate_day_ahead_procurement(payload: ProcurementSimulationRequest):
         },
         "periods": results
     }
+

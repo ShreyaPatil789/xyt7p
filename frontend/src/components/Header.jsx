@@ -1,13 +1,23 @@
-import React from 'react';
-import { Wind, Activity, BookOpen, Layers, Zap, Clock, ShieldCheck } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Wind, Activity, Zap, Clock, ShieldCheck, Radio } from 'lucide-react';
 
 export default function Header({
   activeTab,
   setActiveTab,
-  onOpenPitch,
-  onOpenArch,
   selectedDate
 }) {
+  const [utcTime, setUtcTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setUtcTime(now.toUTCString().slice(17, 22) + ' UTC');
+    };
+    updateTime();
+    const timer = setInterval(updateTime, 30000);
+    return () => clearInterval(timer);
+  }, []);
+
   const tabs = [
     { id: 'cockpit', label: 'Day-Ahead Cockpit', icon: Activity },
     { id: 'evolution', label: 'Forecast Evolution', icon: Clock },
@@ -34,29 +44,24 @@ export default function Header({
                 </span>
               </div>
               <p className="text-xs text-slate-400 hidden sm:block">
-                Day-Ahead Wind Power Forecast Intelligence • Elexon BMRS Live Integration
+                Day-Ahead Wind Power Forecast Intelligence • Elexon BMRS Integration
               </p>
             </div>
           </div>
 
-          {/* Action buttons for Client Pitch & Tech Review */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <button
-              onClick={onOpenPitch}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all shadow-sm"
-              title="View Client Pitch & Presentation Script (Deliverable 3.1)"
-            >
-              <Zap className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">Client Pitch</span> (Part 1)
-            </button>
-            <button
-              onClick={onOpenArch}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/30 hover:bg-sky-500/20 transition-all shadow-sm"
-              title="View Technical Lead Architecture & Code Review (Deliverable 3.2)"
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">Tech Review</span> (Part 2)
-            </button>
+          {/* Enterprise Trading Desk Badges */}
+          <div className="flex items-center gap-2 sm:gap-3 text-xs">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300">
+              <Clock className="w-3.5 h-3.5 text-sky-400" />
+              <span className="font-mono">{utcTime || 'UTC'}</span>
+              <span className="text-slate-600">|</span>
+              <span className="text-[11px] text-slate-400">Auction Gate: <strong className="text-slate-200">11:00 UTC</strong></span>
+            </div>
+
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-xs">Elexon Connected</span>
+            </div>
           </div>
         </div>
 
